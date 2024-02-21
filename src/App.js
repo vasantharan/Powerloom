@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 function App() {
   const [file, setFile] = useState(null);
+  const [res, setRes] = useState(null);
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -17,9 +18,11 @@ function App() {
         .then(response => response.text())
         .then(result => {
           console.log(result);
+          setRes(result);
         })
         .catch(error => {
           console.error('Error uploading file:', error);
+          setRes('Error uploading file:', error);
         });
     } else {
     }
@@ -29,6 +32,11 @@ function App() {
       <h1>File Upload</h1>
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
+      <br/>
+      <br/>
+      {
+        res
+      }
     </div>
   );
 }
