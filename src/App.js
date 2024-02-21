@@ -10,7 +10,7 @@ function App() {
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
-      fetch('/upload', {
+      fetch('http://127.0.0.1:5000/upload', {
         method: 'POST',
         body: formData
       })
